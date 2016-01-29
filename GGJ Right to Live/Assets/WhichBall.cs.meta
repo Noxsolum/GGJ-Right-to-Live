@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6223b5ec3d350f349a32f0912794f7ce
+timeCreated: 1454092438
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - whiteBall: {fileID: 493658, guid: 7077f851cc96c1241abe532673bcbe81, type: 2}
+  - blackBall: {fileID: 414142, guid: 312793a119541b944b04a8c980111fa5, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
