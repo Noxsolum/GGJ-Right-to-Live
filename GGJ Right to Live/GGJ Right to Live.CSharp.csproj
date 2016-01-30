@@ -70,6 +70,8 @@
   <ItemGroup>
     <Compile Include="Assets\CupMove1.cs" />
     <Compile Include="Assets\CupMove2.cs" />
+    <Compile Include="Assets\DontDestroy.cs" />
+    <Compile Include="Assets\TimeAndAge.cs" />
     <Compile Include="Assets\WhichBall.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
