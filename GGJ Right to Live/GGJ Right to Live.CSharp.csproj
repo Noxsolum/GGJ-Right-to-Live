@@ -68,9 +68,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Controller.cs" />
     <Compile Include="Assets\CupMove1.cs" />
     <Compile Include="Assets\CupMove2.cs" />
-    <Compile Include="Assets\DontDestroy.cs" />
+    <Compile Include="Assets\Lighting.cs" />
+    <Compile Include="Assets\TakingText.cs" />
     <Compile Include="Assets\TimeAndAge.cs" />
     <Compile Include="Assets\WhichBall.cs" />
   </ItemGroup>

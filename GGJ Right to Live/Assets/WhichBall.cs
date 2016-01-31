@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class WhichBall : MonoBehaviour
 {
     public int x;
+    public bool nextAttempt = false;
     public bool cupMove1 = false;
     public bool cupMove2 = false;
     public bool blackRight = false;
@@ -16,6 +19,7 @@ public class WhichBall : MonoBehaviour
     public GameObject cupTwo;
     public GameObject textScript;
     public TimeAndAge timeScript;
+   // public Animator menuAnim;
 
     // ============================
     // Use this for initialization
@@ -27,6 +31,7 @@ public class WhichBall : MonoBehaviour
         // ===============
         cupOne = GameObject.FindWithTag("cupOne");
         cupTwo = GameObject.FindWithTag("cupTwo");
+        //menuAnim = GetComponent<Animator>();
         textScript = GameObject.FindWithTag("TextCreator");
 
         // ==============================================================================
@@ -96,12 +101,14 @@ public class WhichBall : MonoBehaviour
             if (blackRight == true)
             {
                 print("Game Over");
+                StartCoroutine(WaitGO());
             }
             else
             {
                 print("Continue");
-                timeScript = textScript.GetComponent<TimeAndAge>();
-                timeScript.attemptCount++;
+               // StartCoroutine(WaitLight());
+             //   menuAnim.SetTrigger("FadingOut");
+                StartCoroutine(WaitRedo());
             }
         }
         if (cupMove2 == true)
@@ -112,20 +119,37 @@ public class WhichBall : MonoBehaviour
             if (blackLeft == true)
             {
                 print("Game Over");
+                StartCoroutine(WaitGO());
             }
             else
             {
                 print("Continue");
-                timeScript = textScript.GetComponent<TimeAndAge>();
-                timeScript.attemptCount++;
+                //StartCoroutine(WaitLight());
+             //   menuAnim.SetTrigger("FadingOut");
+                StartCoroutine(WaitRedo());
             }
         }
-
         // ============
         // Live of Die
         // ============
 
 
 
+    }
+    IEnumerator WaitLight()
+    {
+        yield return new WaitForSeconds(3);
+    }
+
+    IEnumerator WaitGO()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("End");
+    }
+
+    IEnumerator WaitRedo()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Main");
     }
 }
