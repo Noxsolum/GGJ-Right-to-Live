@@ -19,7 +19,10 @@ public class WhichBall : MonoBehaviour
     public GameObject cupTwo;
     public GameObject textScript;
     public TimeAndAge timeScript;
-   // public Animator menuAnim;
+    public GameObject Light1;
+    public Animator LightTrigger1;
+    public GameObject Light2;
+    public Animator LightTrigger2;
 
     // ============================
     // Use this for initialization
@@ -31,6 +34,10 @@ public class WhichBall : MonoBehaviour
         // ===============
         cupOne = GameObject.FindWithTag("cupOne");
         cupTwo = GameObject.FindWithTag("cupTwo");
+        Light1 = GameObject.FindWithTag("Light1");
+        LightTrigger1 = Light1.GetComponent<Animator>();
+        Light2 = GameObject.FindWithTag("Light2");
+        LightTrigger2 = Light2.GetComponent<Animator>();
         //menuAnim = GetComponent<Animator>();
         textScript = GameObject.FindWithTag("TextCreator");
 
@@ -101,13 +108,13 @@ public class WhichBall : MonoBehaviour
             if (blackRight == true)
             {
                 print("Game Over");
+                StartCoroutine(WaitLight());
                 StartCoroutine(WaitGO());
             }
             else
             {
                 print("Continue");
-               // StartCoroutine(WaitLight());
-             //   menuAnim.SetTrigger("FadingOut");
+                StartCoroutine(WaitLight());
                 StartCoroutine(WaitRedo());
             }
         }
@@ -119,13 +126,13 @@ public class WhichBall : MonoBehaviour
             if (blackLeft == true)
             {
                 print("Game Over");
+                StartCoroutine(WaitLight());
                 StartCoroutine(WaitGO());
             }
             else
             {
                 print("Continue");
-                //StartCoroutine(WaitLight());
-             //   menuAnim.SetTrigger("FadingOut");
+                StartCoroutine(WaitLight());
                 StartCoroutine(WaitRedo());
             }
         }
@@ -138,18 +145,20 @@ public class WhichBall : MonoBehaviour
     }
     IEnumerator WaitLight()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
+        LightTrigger1.SetTrigger("FadingOut");
+        LightTrigger2.SetTrigger("FadingOut");
     }
 
     IEnumerator WaitGO()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         SceneManager.LoadScene("End");
     }
 
     IEnumerator WaitRedo()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         SceneManager.LoadScene("Main");
     }
 }
