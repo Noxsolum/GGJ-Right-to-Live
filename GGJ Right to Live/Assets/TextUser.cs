@@ -6,7 +6,7 @@ using System.Collections;
 public class TextUser : MonoBehaviour {
 
     public GameObject nameObject;
-    public TakingText takingtext;
+    public savedData takingtext;
     public GameObject endObject;
     public Text endText;
 
@@ -14,14 +14,14 @@ public class TextUser : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         endObject = gameObject;
-        nameObject = GameObject.FindWithTag("TextAdder");
+        nameObject = GameObject.Find("PlayerData");
         endText = endObject.GetComponent<Text>();
-        takingtext = nameObject.GetComponent<TakingText>();
+        takingtext = nameObject.GetComponent<savedData>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        endText.text = "Thank you for your sacrifice " + takingtext.sSave + "...";
+        endText.text = "Thank you for your sacrifice " + takingtext.PlayerName + "...";
         StartCoroutine(EndGame());
 
 	}

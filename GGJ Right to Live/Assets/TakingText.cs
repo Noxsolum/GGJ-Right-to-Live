@@ -4,20 +4,25 @@ using System.Collections;
 
 public class TakingText : MonoBehaviour {
 
-    public string sSave;
-    public GameObject newObject;
+    public GameObject textObject;
+    public GameObject SaveObject;
+    public savedData dataScript;
+    public Button saveButton;
     public InputField inputObject;
 
 	// Use this for initialization
 	void Start () {
-        newObject = GameObject.FindWithTag("TextCreator");
-        inputObject = newObject.GetComponent<InputField>();
-	}
+        SaveObject = GameObject.Find("PlayerData");
+        Button _saveButton = saveButton.GetComponent<Button>();
+        _saveButton.onClick.AddListener(TaskOnClick);
+        textObject = GameObject.FindWithTag("TextCreator");
+        inputObject = textObject.GetComponent<InputField>();
+        dataScript = SaveObject.GetComponent<savedData>();
+    }
 	
 	// Update is called once per frame
-	void Update () {
-        sSave = inputObject.text;
-        print(sSave);
-        DontDestroyOnLoad(gameObject);
-	}
+    void TaskOnClick()
+    {
+        dataScript.PlayerName = inputObject.text;
+    }
 }
